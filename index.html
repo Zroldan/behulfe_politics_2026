@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Ingreso a Instalaciones – BEHULFE</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #1A0101;
+      --red:    #A93636;
+      --cream:  #F0E5E5;
+      --red-dark: #7a2020;
+      --red-light: #c95050;
+      --surface: #2a0808;
+      --surface2: #3a1010;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--cream);
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, var(--surface) 0%, #1a0101 60%, var(--red-dark) 100%);
+      border-bottom: 3px solid var(--red);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(169,54,54,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-inner {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .logo-wrapper img {
+      height: 110px;
+      width: auto;
+      filter: drop-shadow(0 4px 18px rgba(169,54,54,0.5));
+    }
+
+    /* Fallback badge shown when logo image is missing */
+    .logo-fallback {
+      display: none;
+      background: var(--red);
+      color: var(--cream);
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      padding: 0.5rem 1.8rem;
+      border-radius: 6px;
+    }
+
+    .logo-wrapper img:not([src]),
+    .logo-wrapper img[src=""] {
+      display: none;
+    }
+
+    header h1 {
+      font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    header .subtitle {
+      font-size: 0.9rem;
+      color: rgba(240,229,229,0.6);
+      font-style: italic;
+    }
+
+    header .date-badge {
+      display: inline-block;
+      background: var(--red);
+      color: var(--cream);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 2px solid var(--red-dark);
+      padding: 0.6rem 1rem;
+      overflow-x: auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 0.3rem;
+      justify-content: center;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      min-width: max-content;
+      margin: 0 auto;
+    }
+
+    nav ul li a {
+      display: block;
+      color: rgba(240,229,229,0.7);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    nav ul li a:hover {
+      background: var(--red);
+      color: var(--cream);
+    }
+
+    /* ── MAIN ─────────────────────────────────────────────────── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    /* Intro banner */
+    .intro-banner {
+      background: linear-gradient(135deg, var(--surface2), var(--surface));
+      border-left: 5px solid var(--red);
+      border-radius: 0 10px 10px 0;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 3rem;
+      font-size: 0.97rem;
+      color: var(--cream);
+    }
+
+    .intro-banner strong {
+      color: var(--red-light);
+    }
+
+    /* ── SECTIONS ─────────────────────────────────────────────── */
+    .policy-section {
+      margin-bottom: 2.8rem;
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid rgba(169,54,54,0.2);
+    }
+
+    .policy-section:last-child {
+      border-bottom: none;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .section-number {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--red);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .section-header h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--cream);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .policy-section p {
+      font-size: 0.96rem;
+      color: rgba(240,229,229,0.9);
+      margin-bottom: 0.8rem;
+      text-align: justify;
+    }
+
+    .policy-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Highlighted text within paragraphs */
+    .policy-section strong {
+      color: var(--cream);
+      font-weight: 700;
+    }
+
+    .policy-section em {
+      color: rgba(240,229,229,0.75);
+      font-style: italic;
+    }
+
+    /* Prohibitions box */
+    .prohibitions-box {
+      background: linear-gradient(135deg, rgba(169,54,54,0.15), rgba(122,32,32,0.1));
+      border: 1px solid rgba(169,54,54,0.35);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      margin-top: 1rem;
+    }
+
+    .prohibitions-box .box-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--red-light);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.7rem;
+    }
+
+    .prohibitions-box ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 1.5rem;
+    }
+
+    .prohibitions-box ul li {
+      font-size: 0.88rem;
+      color: rgba(240,229,229,0.85);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+    }
+
+    .prohibitions-box ul li::before {
+      content: '✕';
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* Consequences box */
+    .consequences-box {
+      background: linear-gradient(135deg, rgba(26,1,1,0.8), var(--surface2));
+      border: 1px solid rgba(169,54,54,0.3);
+      border-radius: 8px;
+      padding: 1.1rem 1.4rem;
+      margin-top: 1rem;
+    }
+
+    .consequences-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .consequences-box ul li {
+      font-size: 0.9rem;
+      color: rgba(240,229,229,0.85);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .consequences-box ul li::before {
+      content: '›';
+      color: var(--red-light);
+      font-size: 1.1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────── */
+    footer {
+      background: var(--surface);
+      border-top: 3px solid var(--red);
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .signature-block {
+      display: inline-block;
+      background: rgba(169,54,54,0.1);
+      border: 1px solid rgba(169,54,54,0.3);
+      border-radius: 10px;
+      padding: 1.2rem 2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .signature-line {
+      width: 180px;
+      height: 1px;
+      background: var(--red);
+      margin: 0 auto 0.6rem;
+    }
+
+    .signature-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    .signature-role {
+      font-size: 0.82rem;
+      color: rgba(240,229,229,0.65);
+    }
+
+    .footer-address {
+      font-size: 0.8rem;
+      color: rgba(240,229,229,0.5);
+      line-height: 1.9;
+    }
+
+    .footer-address strong {
+      color: rgba(240,229,229,0.75);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-copy {
+      margin-top: 1.2rem;
+      font-size: 0.72rem;
+      color: rgba(240,229,229,0.3);
+      border-top: 1px solid rgba(169,54,54,0.15);
+      padding-top: 0.9rem;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      header { padding: 2rem 1rem; }
+      .logo-wrapper img { height: 80px; }
+      header h1 { font-size: 0.95rem; }
+      .section-header h2 { font-size: 1rem; }
+      .prohibitions-box ul { grid-template-columns: 1fr; }
+      nav ul { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <div class="logo-wrapper">
+      <!-- <img src="logo-behulfe.png" alt="BEHULFE – Beneficiadora de Hules El Fénix" /> -->
+      <img src="https://0201.nccdn.net/1_2/000/000/100/e64/logo-versiones-color-png-01.png" alt="BEHULFE – Beneficiadora de Hules El Fénix" />
+      <!-- Fallback if logo file is not present -->
+      <div class="logo-fallback">BEHULFE</div>
+    </div>
+    <h1>Política de Ingreso a Instalaciones de BEHULFE</h1>
+    <p class="subtitle">Beneficiadora de Hules El Fénix, S.A. de C.V.</p>
+    <span class="date-badge">Las Choapas, Veracruz &nbsp;·&nbsp; Febrero 2026</span>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════════════════════ -->
+<nav aria-label="Secciones de la política">
+  <ul>
+    <li><a href="#sec1">1. General</a></li>
+    <li><a href="#sec2">2. Identificación</a></li>
+    <li><a href="#sec3">3. Prohibiciones</a></li>
+    <li><a href="#sec4">4. Acceso</a></li>
+    <li><a href="#sec5">5. Permanencia</a></li>
+    <li><a href="#sec6">6. Vigencia</a></li>
+    <li><a href="#sec7">7. Revisión</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════════════════════════════ -->
+<main>
+
+  <div class="intro-banner">
+    El presente documento establece los lineamientos oficiales que regulan el ingreso a las instalaciones de
+    <strong>BENEFICIADORA DE HULES EL FÉNIX S.A. DE C.V.</strong> y es de <strong>observancia obligatoria</strong>
+    para todo colaborador, visitante, proveedor, contratista o prestador de servicios.
+  </div>
+
+  <!-- SECCIÓN 1 -->
+  <section class="policy-section" id="sec1">
+    <div class="section-header">
+      <span class="section-number">1</span>
+      <h2>Disposición General y Alcance</h2>
+    </div>
+    <p>
+      Con el propósito de salvaguardar la integridad física de las personas, proteger los activos de la
+      organización y garantizar la continuidad segura de las operaciones, BENEFICIADORA DE HULES EL FÉNIX
+      S.A. DE C.V. establece que <strong>toda persona que ingrese a sus instalaciones</strong>, ya sea
+      colaborador, visitante, proveedor, contratista o prestador de servicios, deberá cumplir estrictamente
+      con los lineamientos internos de control de acceso y seguridad.
+    </p>
+  </section>
+
+  <!-- SECCIÓN 2 -->
+  <section class="policy-section" id="sec2">
+    <div class="section-header">
+      <span class="section-number">2</span>
+      <h2>Requisitos de Identificación y Registro</h2>
+    </div>
+    <p>
+      <strong>El ingreso a las instalaciones estará condicionado a la correcta identificación de la persona</strong>
+      mediante credencial oficial vigente e identificación institucional pertinente, así como al registro
+      correspondiente en la bitácora de control de acceso <em>(Registro de visitas)</em>. Toda persona deberá
+      portar en lugar visible el gafete de identificación temporal que le sea asignado durante el tiempo que
+      permanezca dentro de la empresa y deberá respetar en todo momento las disposiciones de seguridad,
+      señalética, uso de equipo de protección personal y lineamientos internos establecidos.
+    </p>
+  </section>
+
+  <!-- SECCIÓN 3 -->
+  <section class="policy-section" id="sec3">
+    <div class="section-header">
+      <span class="section-number">3</span>
+      <h2>Prohibiciones de Ingreso</h2>
+    </div>
+    <p>
+      <strong>Queda estrictamente prohibido</strong> el acceso a cualquier persona que se encuentre bajo los efectos
+      de alcohol, drogas o sustancias psicotrópicas, así como a quienes porten bebidas alcohólicas, sustancias
+      ilegales o cualquier tipo de estupefaciente. De igual manera, no se permitirá el ingreso de personas que
+      porten objetos punzocortantes, armas blancas, armas de fuego, materiales inflamables, explosivos o cualquier
+      objeto que pueda representar un riesgo para la seguridad de las personas, las instalaciones o los procesos
+      productivos.
+    </p>
+    <p>
+      Asimismo, <strong>no se permitirá el acceso a quienes no puedan acreditar plenamente su identidad</strong>
+      o se nieguen a cumplir con los procedimientos de revisión y control establecidos por la empresa.
+    </p>
+    <div class="prohibitions-box">
+      <p class="box-title">Está prohibido el ingreso con:</p>
+      <ul>
+        <li>Alcohol o sustancias psicotrópicas</li>
+        <li>Bebidas alcohólicas</li>
+        <li>Sustancias ilegales o estupefacientes</li>
+        <li>Objetos punzocortantes</li>
+        <li>Armas blancas o de fuego</li>
+        <li>Materiales inflamables</li>
+        <li>Explosivos</li>
+        <li>Sin identificación vigente</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 -->
+  <section class="policy-section" id="sec4">
+    <div class="section-header">
+      <span class="section-number">4</span>
+      <h2>Facultad de Negar Acceso y Retención Preventiva</h2>
+    </div>
+    <p>
+      BENEFICIADORA DE HULES EL FÉNIX S.A. DE C.V. se reserva <strong>el derecho de negar el acceso o
+      solicitar el retiro inmediato de cualquier persona</strong> cuando considere que existen condiciones que
+      comprometan la seguridad, el orden interno o el adecuado desarrollo de las actividades. La empresa tendrá
+      la facultad de solicitar revisiones preventivas de pertenencias cuando así se considere necesario y podrá
+      retener temporalmente objetos, herramientas o materiales que se estimen peligrosos o no autorizados,
+      durante el tiempo que dure la visita o permanencia en las instalaciones. Dichos objetos serán devueltos
+      al momento de la salida, siempre que no contravengan disposiciones legales aplicables.
+    </p>
+  </section>
+
+  <!-- SECCIÓN 5 -->
+  <section class="policy-section" id="sec5">
+    <div class="section-header">
+      <span class="section-number">5</span>
+      <h2>Permanencia y Consecuencias por Incumplimiento</h2>
+    </div>
+    <p>
+      Durante su permanencia en las instalaciones, <strong>toda persona deberá limitarse</strong> a las áreas
+      autorizadas, cumplir con las indicaciones del personal responsable y acatar los protocolos de seguridad y
+      emergencia vigentes. El incumplimiento de esta política podrá derivar en:
+    </p>
+    <div class="consequences-box">
+      <ul>
+        <li>La cancelación de la visita.</li>
+        <li>El retiro inmediato de las instalaciones.</li>
+        <li>La restricción futura de acceso.</li>
+        <li>La notificación a las autoridades competentes cuando la conducta así lo amerite.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 6 -->
+  <section class="policy-section" id="sec6">
+    <div class="section-header">
+      <span class="section-number">6</span>
+      <h2>Vigencia y Obligatoriedad</h2>
+    </div>
+    <p>
+      <strong>La presente política es de observancia obligatoria</strong> y forma parte integral de los
+      lineamientos de seguridad y control interno de la organización, entrando en vigor a partir de su
+      publicación oficial, o su última actualización.
+    </p>
+  </section>
+
+  <!-- SECCIÓN 7 -->
+  <section class="policy-section" id="sec7">
+    <div class="section-header">
+      <span class="section-number">7</span>
+      <h2>Revisión y Actualización</h2>
+    </div>
+    <p>
+      <strong>La presente política deberá ser revisada de manera anual por la Dirección General y el área
+      de recursos humanos</strong>, con el fin de asegurar su vigencia y pertinencia, así como con las
+      condiciones operativas de la empresa. En caso de detectarse áreas de mejora, cambios regulatorios o
+      modificaciones en los procesos internos, se realizarán las actualizaciones correspondientes, dejando
+      evidencia documental de su revisión y aprobación.
+    </p>
+  </section>
+
+</main>
+
+<!-- ════════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="signature-block">
+      <div class="signature-line"></div>
+      <p class="signature-name">Eva Denisse Méndez Cadena</p>
+      <p class="signature-role">Gerente de Recursos Humanos</p>
+      <p class="signature-role">Beneficiadora de Hules El Fénix, S.A. de C.V.</p>
+    </div>
+    <div class="footer-address">
+      <strong>BENEFICIADORA DE HULES EL FÉNIX, S.A. DE C.V.</strong>
+      Carretera Las Choapas – Cerro de Nanchital, Km. 15<br />
+      Las Choapas, Ver. (México) &nbsp;C.P. 96980
+    </div>
+    <p class="footer-copy">
+      Documento interno &nbsp;·&nbsp; Uso exclusivo del personal y visitantes autorizados &nbsp;·&nbsp; BEHULFE © 2026
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
